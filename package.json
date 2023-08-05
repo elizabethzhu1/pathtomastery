@@ -1,0 +1,39 @@
+{
+  "name": "@cs193x/project",
+  "version": "2023.spr",
+  "author": "Elizabeth Zhu <elizhu@stanford.edu>",
+  "description": "CS193X Final Project",
+  "license": "UNLICENSED",
+  "private": true,
+  "type": "module",
+  "main": "server.js",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "chokidar": "^3.5.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "mongodb": "^5.5.0",
+    "nodemon": "^2.0.22",
+    "openai": "^3.2.1",
+    "socket.io": "^4.6.1",
+    "typed.js": "^2.0.16"
+  },
+  "devDependencies": {
+    "eslint": "^8.38.0",
+    "eslint-config-google": "^0.14.0",
+    "eslint-plugin-prefer-arrow": "^1.2.3"
+  },
+  "scripts": {
+    "lint": "eslint .",
+    "start": "nodemon"
+  },
+  "nodemonConfig": {
+    "signal": "SIGTERM",
+    "watch": [
+      "api",
+      "lib",
+      "server.js"
+    ]
+  }
+}

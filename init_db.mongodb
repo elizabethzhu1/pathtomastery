@@ -1,0 +1,4 @@
+// TODO: If you need to initialize your database with some documents, uncomment/adjust these lines and add insert statements.
+
+//db = connect(...);
+//db.dropDatabase();

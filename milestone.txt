@@ -1,0 +1,31 @@
+CS193X Final Project Milestone
+==============================
+
+Project Title: Path to Mastery
+Your Name: Elizabeth Zhu
+Your SUNetID: elizhu
+
+Overview
+--------
+Things are going okay! I have implemented very basic frontend -- set up the HTML, CSS, and JS pages and spent some time making the background gradient animated. I managed to set up an input form and successfully take in user inputs using an event handler. Something major I am struggling with right now is trying to integrate the OpenAI API into my website -- this is proving to be harder than I initially expected, as I will have to do it from the server-side. 
+ 
+Project Changes
+---------------
+Still planning on sticking to the same general idea!
+
+Implementation Details
+----------------------
+For the frontend, I have drawn out a basic layout for my web app on my iPad. Essentially, it will provide a text box for the user to enter a topic they would like to learn about, and then generate an interactive pathway containing resources that they can use to master that subject. I want to also implement some authentication feature where the user can login and save certain pathways in the backend. On the frontend, they will also be able to check off when they have reached certain milestone. I will need to implement an API endpoint to get the OpenAI generated data from the backend in order to then form the interactive pathway in the frontend (I hope to use the createCompletion feature to generate the responses). I will also have to add more CSS to make the site be interactive and aesthetic.
+
+External libraries and code
+---------------------------
+I am using the OpenAI API library, which I am using to process the user's inputted topic, in order to suggest a recommended pathway. 
+
+Collaboration and resources
+---------------------------
+I plan on using online tutorials and the internet in order to learn how to integrate certain libraries (i.e. OpenAI) and add particular features to the site.
+
+Anything else?
+--------------
+
+
