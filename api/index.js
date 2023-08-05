@@ -1,13 +1,18 @@
 import bodyParser from "body-parser";
 import cors from "cors";
 import express from "express";
-import OPENAIKEY from ".env";
 
 // my imports
 import { Configuration, OpenAIApi } from "openai";
 import { MongoClient } from "mongodb";
 
 let api = express.Router();
+
+// load env variables
+const dotenv = require("dotenv");
+dotenv.config();
+
+const OPENAIKEY = process.env.OPENAIKEY;
 
 const configuration = new Configuration({
   apiKey: OPENAIKEY
