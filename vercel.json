@@ -3,5 +3,8 @@
   "outputDirectory": "public",
   "rewrites": [
     { "source": "/api/(.*)", "destination": "/api" }
-  ]
+  ],
+  "functions": {
+      "maxDuration": 60
+  }
 }
