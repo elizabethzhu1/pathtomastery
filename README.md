@@ -1,4 +1,4 @@
-**Path To Mastery**
+*******Path To Mastery*******
 
 A site that contains an interactive learning roadmap for any topic.
 
