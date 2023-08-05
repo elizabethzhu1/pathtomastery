@@ -1,0 +1,7 @@
+{
+  "buildCommand": "mv api myapi && mkdir -p api && mv vercel.js api/index.js",
+  "outputDirectory": "public",
+  "rewrites": [
+    { "source": "/api/(.*)", "destination": "/api" }
+  ]
+}

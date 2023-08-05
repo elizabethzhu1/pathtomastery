@@ -1,0 +1,110 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title> Path to Mastery </title>
+        <link rel="stylesheet" href="styles.css">
+        <script type="module" src="./index.js"></script>
+        <script src="https://unpkg.com/typed.js@2.0.16/dist/typed.umd.js"></script>
+    </head>
+    <body>
+        <button id="viewUsers"> View Users </button>
+        <button id="viewTopics"> View My Topics </button>
+        <form id="loginForm">
+            <!-- <label id="loginLabel" for="userInput"> User: </label> -->
+            <input type="text" id="userInput" placeholder="Enter a username">
+            <button id="loginButton"> Sign In </button>
+        </form>
+        <h1 id="title"> Path to Mastery 🗻 </h1>
+        <form id="form">
+            <label for="topic" id="subtitle"> What do you want to learn today? </label><br>
+            <input type="text" id="topic" placeholder="Enter any topic or phrase.">
+            <button id="enterButton" class="glow-on-hover"> Generate pathway ✨ </button>
+        </form>
+        <div id="loading">
+            <span class="typing"></span>
+        </div>
+        <script>
+            var typed = new Typed('.typing', {
+                strings: [" ", 'Generating your path ...', "It may take a minute ..."],
+                typeSpeed: 100,
+                backSpeed: 100,
+                loop: true
+            });
+        </script>
+
+        <div id="timelinewrapper" class="hidden">
+            <div id="timeline">
+                <div id="step1" class="stepcontainer">
+                    <div id="circle1" class="circle"></div>
+                    <div id="title1" class="bigtitle"> Step 1 </div>
+                    <div class="gap"></div>
+                    <div id="description1" class="description hidden">
+                        <p id="s1t1" class="title"></p>
+                        <p id="s1e1" class="explanation"></p>
+                        <a id="s1l1" class="link"></a>
+
+                        <p id="s1t2" class="title"></p>
+                        <p id="s1e2" class="explanation"></p>
+                        <a id="s1l2" class="link"> </a>
+                    </div>
+                </div>
+                <div id="step2" class="stepcontainer">
+                    <div id="circle2" class="circle"></div>
+                    <div id="title2" class="bigtitle"> Step 2 </div>
+                    <div class="gap"></div>
+                    <div id="description2" class="description hidden">
+                        <p id="s2t1" class="title"></p>
+                        <p id="s2e1" class="explanation"></p>
+                        <a id="s2l1" class="link"></a>
+
+                        <p id="s2t2" class="title"></p>
+                        <p id="s2e2" class="explanation"></p>
+                        <a id="s2l2" class="link"></a>
+                    </div>
+                </div>
+                <div id="step3" class="stepcontainer">
+                    <div id="circle3" class="circle"></div>
+                    <div id="title3" class="bigtitle"> Step 3 </div>
+                    <div class="gap"></div>
+                    <div id="description3" class="description hidden">
+                        <p id="s3t1" class="title"></p>
+                        <p id="s3e1" class="explanation"></p>
+                        <a id="s3l1" class="link"></a>
+
+                        <p id="s3t2" class="title"></p>
+                        <p id="s3e2" class="explanation"></p>
+                        <a id="s3l2" class="link"></a>
+                    </div>
+                </div>
+                <div id="step4" class="stepcontainer">
+                    <div id="circle4" class="circle"></div>
+                    <div id="title4" class="bigtitle"> Step 4 </div>
+                    <div class="gap"></div>
+                    <div id="description4" class="description hidden">
+                        <p id="s4t1" class="title"></p>
+                        <p id="s4e1" class="explanation"></p>
+                        <a id="s4l1" class="link"></a>
+
+                        <p id="s4t2" class="title"></p>
+                        <p id="s4e2" class="explanation"></p>
+                        <a id="s4l2" class="link"></a>
+                    </div>
+                </div>
+                <div id="step5" class="stepcontainer last">
+                    <div id="circle5" class="circle"></div>
+                    <div id="title5" class="bigtitle"> Step 5 </div>
+                    <div class="gap"></div>
+                    <div id="description5" class="description hidden">
+                        <p id="s5t1" class="title"></p>
+                        <p id="s5e1" class="explanation"></p>
+                        <a id="s5l1" class="link"></a>
+
+                        <p id="s5t2" class="title"></p>
+                        <p id="s5e2" class="explanation"></p>
+                        <a id="s5l2" class="link"></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
