@@ -1,6 +1,7 @@
 import bodyParser from "body-parser";
 import cors from "cors";
 import express from "express";
+import dotenv from "dotenv";
 
 // my imports
 import { Configuration, OpenAIApi } from "openai";
@@ -9,7 +10,6 @@ import { MongoClient } from "mongodb";
 let api = express.Router();
 
 // load env variables
-const dotenv = require("dotenv");
 dotenv.config();
 
 const OPENAIKEY = process.env.OPENAIKEY;
