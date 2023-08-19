@@ -55,7 +55,7 @@ api.post("/generateresponse", async (req, res) => {
 
   console.log("Input: " + input);
   let prompt = `Generate a comprehensive, step-by-step learning guide to master ${input}. 
-  Your response should be a JSON object with 5 properties for each skill to learn ${input}.
+  Your response should be a complete JSON object with 5 properties for each skill to learn ${input}.
   Each property key consists of a few words specifically describing the skill the user is supposed to learn.
   Each property maps to an array of strictly 2 JSON objects, where each object consists of 3 properties: 
   "title", "description", and "source" (which is a working link to the resource).`;
@@ -67,7 +67,7 @@ api.post("/generateresponse", async (req, res) => {
       { "role": "system", "content": "You are a helpful assistant who is tasked with helping a user learn a subject of their choosing in a comprehensive way." },
       { "role": "user", "content": prompt }
     ],
-    max_tokens: 700,
+    max_tokens: 500,
   });
 
   // return response to frontend
