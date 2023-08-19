@@ -55,13 +55,10 @@ api.post("/generateresponse", async (req, res) => {
 
   console.log("Input: " + input);
   let prompt = `Generate a comprehensive, step-by-step learning guide to master ${input}. 
-  Your response should only be in JSON. The JSON object must have 5 properties that correspond to each skill developed in the learning process, ordered in a way that enables a layperson to most effectively learn ${input}. 
-  Each property key consists of a few words specifically describing the skill the user is supposed to learn. An example of a property value could be "Learning the Fundamentals" or "Getting More Practice".
-  Each property maps to an array of strictly 2 JSON objects, where each object consists of strictly 3 properties: 
-  "title", "description", and "source". The "title" property maps to the title of the resource. 
-  The "description" property maps to a short 1 line description about what the resource is / what it does.
-  The "source" property maps to a working link where the user can access the resources.
-  You must ensure your response is a complete JSON object that is under 600 tokens.`;
+  Your response should be a JSON object with 5 properties for each skill to learn ${input}.
+  Each property key consists of a few words specifically describing the skill the user is supposed to learn.
+  Each property maps to an array of strictly 2 JSON objects, where each object consists of 3 properties: 
+  "title", "description", and "source" (which is a working link to the resource).`;
   console.log("Prompt: " + prompt);
 
   const response = await openai.createChatCompletion({
@@ -69,7 +66,8 @@ api.post("/generateresponse", async (req, res) => {
     messages: [
       { "role": "system", "content": "You are a helpful assistant who is tasked with helping a user learn a subject of their choosing in a comprehensive way." },
       { "role": "user", "content": prompt }
-    ]
+    ],
+    max_tokens: 700,
   });
 
   // return response to frontend
