@@ -7,7 +7,9 @@ import dotenv from "dotenv";
 import { Configuration, OpenAIApi } from "openai";
 import { MongoClient } from "mongodb";
 
-export const runtime = "edge";
+export const config = {
+  runtime: "edge"
+};
 
 let api = express.Router();
 
@@ -66,7 +68,7 @@ api.post("/generateresponse", async (req, res) => {
       { "role": "system", "content": "You are a helpful assistant who is tasked with helping a user learn a subject of their choosing in a comprehensive way." },
       { "role": "user", "content": prompt }
     ],
-    max_tokens: 500,
+    max_tokens: 500
   });
 
   // return response to frontend
