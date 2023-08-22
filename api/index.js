@@ -7,6 +7,8 @@ import dotenv from "dotenv";
 import { Configuration, OpenAIApi } from "openai";
 import { MongoClient } from "mongodb";
 
+export const runtime = "edge";
+
 let api = express.Router();
 
 // load env variables
@@ -19,9 +21,6 @@ const configuration = new Configuration({
 });
 
 const openai = new OpenAIApi(configuration);
-
-let users;
-let db;
 
 const initApi = async (app) => {
   app.set("json spaces", 2);
@@ -54,14 +53,15 @@ api.post("/generateresponse", async (req, res) => {
   const input = req.body.input;
 
   console.log("Input: " + input);
-  let prompt = `Generate a comprehensive, step-by-step learning guide to master ${input}. 
-  Your response should only be in JSON. The JSON object must have 5 properties that correspond to each skill developed in the learning process, ordered in a way that enables a layperson to most effectively learn ${input}. 
-  Each property key consists of a few words specifically describing the skill the user is supposed to learn. An example of a property value could be "Learning the Fundamentals" or "Getting More Practice".
-  Each property maps to an array of strictly 2 JSON objects, where each object consists of strictly 3 properties: 
-  "title", "description", and "source". The "title" property maps to the title of the resource. 
-  The "description" property maps to a short 1 line description about what the resource is / what it does.
-  The "source" property maps to a working link where the user can access the resources.
-  You must ensure your response is a complete JSON object that is under 600 tokens.`;
+  // let prompt = `Generate a comprehensive, step-by-step learning guide to master ${input}.
+  // Your response should only be in JSON. The JSON object must have 5 properties that correspond to each skill developed in the learning process, ordered in a way that enables a layperson to most effectively learn ${input}.
+  // Each property key consists of a few words specifically describing the skill the user is supposed to learn. An example of a property value could be "Learning the Fundamentals" or "Getting More Practice".
+  // Each property maps to an array of strictly 2 JSON objects, where each object consists of strictly 3 properties:
+  // "title", "description", and "source". The "title" property maps to the title of the resource.
+  // The "description" property maps to a short 1 line description about what the resource is / what it does.
+  // The "source" property maps to a working link where the user can access the resources.
+  // You must ensure your response is a complete JSON object that is under 600 tokens.`;
+  let prompt = `Provide a learning guide for mastering ${input}. I need a JSON structure with 5 skills to develop, each linked to 2 resources with title, description, and a working link.`;
   console.log("Prompt: " + prompt);
 
   const response = await openai.createChatCompletion({
@@ -74,23 +74,6 @@ api.post("/generateresponse", async (req, res) => {
 
   // return response to frontend
   res.json({ response: response.data.choices[0].message.content });
-});
-
-// API endpoint #2: stores new user in MongoDB database, if not in database already
-api.post("/newuser/:username", async (req, res) => {
-  const username = req.params.username; // uses a route parameter
-
-  const findUser = await getUser(username);
-  if (!findUser) {
-    const newUser = {
-      "username": username,
-      "topics": []
-    };
-    await users.insertOne(newUser);
-    res.json(newUser);
-  } else {
-    res.json({ message: "User already exists in database" });
-  }
 });
 
 // API endpoint #3: gets all users
