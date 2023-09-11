@@ -50,6 +50,11 @@ export default class Timeline {
 
     response = response.response;
 
+    if (!response) {
+      alert("There was an error with the server. Please try again!");
+      return;
+    }
+
     // hide loading text animation
     this.hideLoading();
 

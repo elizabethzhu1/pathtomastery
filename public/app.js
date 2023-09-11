@@ -90,7 +90,7 @@ export default class App {
     const timeline = new Timeline(input, this.user);
     await timeline.generateTimeline(input);
 
-    const user = await apiRequest("PATCH", `/addtopic/${this.user}`, { topic: input });
+    // const user = await apiRequest("PATCH", `/addtopic/${this.user}`, { topic: input });
     console.log(user);
   }
 }
