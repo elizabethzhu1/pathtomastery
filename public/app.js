@@ -86,7 +86,6 @@ export default class App {
     timelinewrapper.classList.add("hidden");
 
     let input = document.querySelector("#topic").value;
-    console.log(input);
 
     const timeline = new Timeline(input, this.user);
     await timeline.generateTimeline(input);
