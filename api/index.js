@@ -24,6 +24,9 @@ const configuration = new Configuration({
 
 const openai = new OpenAIApi(configuration);
 
+let db;
+let users;
+
 const initApi = async (app) => {
   app.set("json spaces", 2);
   app.use("/api", api);
@@ -52,6 +55,9 @@ api.use(cors());
 // API endpoint #1: uses OpenAI API to generate a response to the prompt
 api.post("/generateresponse", async (req, res) => {
   // get user input
+
+  console.log(req);
+
   const input = req.body.input;
 
   console.log("Input: " + input);
@@ -59,7 +65,8 @@ api.post("/generateresponse", async (req, res) => {
   Your response should be a complete JSON object with 5 properties for each skill to learn ${input}.
   Each property key consists of a few words specifically describing the skill the user is supposed to learn.
   Each property maps to an array of strictly 2 JSON objects, where each object consists of 3 properties: 
-  "title", "description", and "source" (which is a working link to the resource).`;
+  "title", "description", and "source" (which must be a working public link to the resource).
+  You must ensure the response is a complete JSON object.`;
   console.log("Prompt: " + prompt);
 
   const response = await openai.createChatCompletion({
@@ -67,8 +74,7 @@ api.post("/generateresponse", async (req, res) => {
     messages: [
       { "role": "system", "content": "You are a helpful assistant who is tasked with helping a user learn a subject of their choosing in a comprehensive way." },
       { "role": "user", "content": prompt }
-    ],
-    max_tokens: 500
+    ]
   });
 
   // return response to frontend

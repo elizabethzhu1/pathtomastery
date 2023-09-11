@@ -17,7 +17,8 @@
     "nodemon": "^2.0.22",
     "openai": "^3.2.1",
     "socket.io": "^4.6.1",
-    "typed.js": "^2.0.16"
+    "typed.js": "^2.0.16",
+    "vercel": "^32.0.0"
   },
   "devDependencies": {
     "eslint": "^8.38.0",

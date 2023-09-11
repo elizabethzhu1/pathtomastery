@@ -1,4 +1,4 @@
-import apiRequest from "./apirequest.js";
+// import apiRequest from "./apirequest.js";
 
 export default class Timeline {
   constructor(input, user) {
@@ -16,13 +16,39 @@ export default class Timeline {
     loading.style.display = "none";
   }
 
+  // calling the AWS Lambda function
+  async callLambda() {
+    try {
+      console.log(this.input);
+
+      const response = await fetch("https://n6i60djmjj.execute-api.us-east-2.amazonaws.com/generateResponse", {
+        "method": "POST",
+        "headers": {
+          "Content-Type": "application/json"
+        },
+        "body": JSON.stringify({ "input": this.input })
+      });
+
+      if (!response.ok) {
+        throw new Error(`Error! Status: ${response.status}`);
+      }
+
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   async generateTimeline() {
     // show loading text animation
     this.showLoading();
 
-    // make API Request to get OpenAI response
-    const data = await apiRequest("POST", "/generateresponse", { input: this.input });
-    const response = data.response;
+    let response = await this.callLambda();
+    console.log("response from lambda: ", response);
+    console.log(response.response);
+
+    response = response.response;
 
     // hide loading text animation
     this.hideLoading();
